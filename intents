@@ -1,0 +1,3 @@
+Messages: Required for guesses
+Presence: Required for voice channel state updates
+Guilds: Required for checking if guild users are in voice channel

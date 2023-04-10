@@ -1,0 +1,54 @@
+THIS IS MOST LIKELY OUTDATED
+
+server store:
+ - active_channel
+ - state: [idle, stopped, playing, played, skipping]
+ - current_song
+ - playlist
+
+functions:
+ - start
+ - stop
+ - skip
+ - play_song
+ - message_event
+ - correct_guess
+ - times_up
+ - reveal
+
+start:
+ - if state == stopped
+ - state: idle
+ - buttons: [duration (+, -), start]
+
+stop:
+ - if state != stopped
+ - state: stopped
+
+play_song:
+ - if state in [idle, skipping]
+ - state: [playing, played]
+ - buttons: [reveal, skip]
+ - after 2x duration: times_up
+
+skip:
+ - if state in [playing]
+ - state: skipping
+ - runs play_song
+
+reveal:
+ - if state in [played]
+ - state: idle
+
+times_up:
+ - if state == played
+ - state: idle
+ - buttons: [reveal, duration (+, -), play_song]
+
+correct_guess:
+ - if state in [playing, played]
+ - state: idle
+ - buttons: [duration (+, -), play_song]
+
+message_event:
+ - if state in [playing, played]
