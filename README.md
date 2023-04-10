@@ -27,7 +27,7 @@
 
 ## Information
 TuneTrivia is a private bot turned public. There may be reminents of development left behind.
-If you want to help develop or add features to TuneTrivia, absolutely feel free to do so. If you think your additions for the bot, make sure to make a PR.
-The code isn't the cleanest but I hope most of it is reasnobly self explanatory. I may add comments in the future to help out new developers.
+If you want to help develop or add features to TuneTrivia, absolutely feel free to do so (also feel free to make a PR with your awesome changes).
+The code isn't the cleanest but I hope most of it is reasnobly self explanatory and readable. I may add comments in the future to help out new developers.
 
 **If you like TuneTrivia or appreciate my efforts remember to Star this repository! ✨**
