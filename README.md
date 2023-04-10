@@ -2,6 +2,8 @@
 
 ### Music Guessing Game! Test your music knowledge with friends! Now open source and available for self-hosting!
 
+**If you like TuneTrivia or appreciate my efforts remember to Star this repository! ✨**
+
 ## Features
 - Music Trivia with a wide range of music genres! 🎼
 - Easy to setup with simple configuration steps. ⚙
@@ -33,4 +35,6 @@ Join the [Discord Server](https://discord.gg/s8nWZVGqDF) if in need to support o
 
 The bot nativly runs in Python 3.8, and hasn't been tested in any other versions.
 
-**If you like TuneTrivia or appreciate my efforts remember to Star this repository! ✨**
+#### Developer Commands (Only available to the user with the ID set in `your_discord_id`)
+- tt!**update** - Pulls from this repo and reloads cogs
+- tt!**reload** - Reloads cogs
