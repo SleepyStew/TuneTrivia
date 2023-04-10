@@ -21,3 +21,10 @@
 - Fill out the `your_discord_id`, `discord_token`, `spotify_client_id` and `spotify_client_secret` fields in the `config.ini`
 - Run `pip -r requirements.txt`
 - Run `py run.py` (Windows) or `python3 run.py` (Linux)
+
+## Information
+TuneTrivia is a private bot turned public. There may be reminents of development left behind.
+If you want to help develop or add features to TuneTrivia, absolutely feel free to do so. If you think your additions for the bot, make sure to make a PR.
+The code isn't the cleanest but I hope most of it is reasnobly self explanatory. I may add comments in the future to help out new developers.
+
+**If you like TuneTrivia or appreciate my efforts remember to Star this repository! ✨**
