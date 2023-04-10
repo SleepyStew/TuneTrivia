@@ -32,6 +32,8 @@ try:
     wavelink_port: int = int(config.get("wavelink", "port"))
     wavelink_password: str = config.get("wavelink", "password")
 
+    usage_statistics: str = config.getboolean("statistics", "usage_statistics")
+
 except Exception as err:
     print("Error getting variables from the config file. Error: " + str(err))
     sys.exit()

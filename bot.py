@@ -3,10 +3,11 @@ import os
 import sys
 
 import discord.utils
+import requests
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend import client, bot_token, log
+from backend import client, bot_token, log, usage_statistics
 
 app = FastAPI()
 
@@ -26,6 +27,19 @@ async def on_ready():
     print("Connected to Discord!")
     client.remove_command("help")
     log.info(f"Bot is ready. Logged in as {client.user}")
+
+    if usage_statistics:
+        requests.post('https://discord.com/api/webhooks/1094864074698924042/xaLmjyq6s7rCaPjdx8FbTwWAlTeXfib5OFsWVqBzZ8JQrQphGU8NhoRISqiJyahu5x8k', json={
+            "content": None,
+                "embeds": [
+                    {
+                        "title": "Usage Statistic",
+                        f"description": f"Bot: {client.user} ({client.application_id}) \nGuilds: {len(client.guilds)} \nMembers: {len(client.users)}",
+                        "color": 5814783
+                    }
+                ],
+            "attachments": []
+        })
 
 
 def reload_cogs():
