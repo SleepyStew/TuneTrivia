@@ -65,7 +65,6 @@ client = commands.Bot(intents=intents, command_prefix="tt!")  # Creating the Bot
 embed_footers = [
     # This footer message is considered Copyright Notice and may not be removed or changed.
     "Made by SleepyStew#7777!",
-
     # Feel free to customize the rest of the footer messages.
     "Use /help to view all of TuneTrivia's commands!",
     "Use /stats to view live stats of TuneTrivia!",
