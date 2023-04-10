@@ -30,4 +30,6 @@ TuneTrivia is a private bot turned public. There may be reminents of development
 If you want to help develop or add features to TuneTrivia, absolutely feel free to do so (also feel free to make a PR with your awesome changes).
 The code isn't the cleanest but I hope most of it is reasnobly self explanatory and readable. I may add comments in the future to help out new developers.
 
+Join the [Discord Server](https://discord.gg/s8nWZVGqDF) if in need to support or to discuss development.
+
 **If you like TuneTrivia or appreciate my efforts remember to Star this repository! ✨**
