@@ -1,21 +1,20 @@
 import asyncio
+import math
 import random
 from difflib import SequenceMatcher
-import math
+
 import discord.ext.pages
 import discord.ext.tasks
-import requests
-import wavelink
-from discord.ext import commands, tasks
-from discord.ui import Item
-from bot import reload_cogs
 import git
-
-from data.guilddata import get_data, set_data
+import wavelink
+from discord.ext import commands
+from discord.ui import Item
 
 import spotify
-from backend import log, error_template, embed_template, client, alpha
-from backend import wavelink_host, wavelink_password, wavelink_port
+from backend import log, error_template, embed_template, client
+from backend import wavelink_host, wavelink_password, wavelink_port, owner_id
+from bot import reload_cogs
+from data.guilddata import get_data, set_data
 
 duration_increment = 3
 minimum_duration = 3
@@ -34,8 +33,6 @@ class Main(discord.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         await self.connect_nodes()
-        if not alpha:
-            self.update_information.start()
 
     async def connect_nodes(self):
         await self.client.wait_until_ready()
@@ -49,99 +46,6 @@ class Main(discord.Cog):
     @commands.Cog.listener()
     async def on_wavelink_node_ready(self, node: wavelink.Node):
         log.info(f"{node.identifier} is ready.")
-
-    @tasks.loop(minutes=30)
-    async def update_information(self):
-        if alpha:
-            return
-
-        guild_count = len(list(client.guilds))
-
-        ### Top.gg ###
-
-        body = {
-            "server_count": guild_count,
-        }
-
-        headers = {
-            "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwNTU0MjU2ODc3MjY2MDg0NTQiLCJib3QiOnRydWUsImlhdCI6MTY3NzQ0MTU1M30.DkTNXxo5XP_w1KzhMENci9c9YU6YLKdcTAIQA9icFC4"
-        }
-
-        requests.post(
-            "https://top.gg/api/bots/1055425687726608454/stats",
-            json=body,
-            headers=headers,
-        )
-
-        ### DiscordBotList.com ###
-
-        body = {"guilds": guild_count}
-
-        headers = {
-            "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0IjoxLCJpZCI6IjEwNTU0MjU2ODc3MjY2MDg0NTQiLCJpYXQiOjE2NzczMjQ0NTF9.Nps_Cam9URmkTdBiUnak0gz2PkdXJsRYqejwRJxdxGQ"
-        }
-
-        requests.post(
-            "https://discordbotlist.com/api/v1/bots/tunetrivia/stats",
-            data=body,
-            headers=headers,
-        )
-
-        ### Discords.com ###
-
-        body = {"server_count": guild_count}
-
-        headers = {
-            "Authorization": "ac76827201be1ef033374d1bf3b92b2b1c440fb929a5f64f586b5069b0dbabe54ff639b22a5e2bf0d72e67302d02443369367736a0abbce1d1f9ea641d0d75b6"
-        }
-
-        requests.post(
-            "https://discords.com/bots/api/bot/1055425687726608454",
-            data=body,
-            headers=headers,
-        )
-
-        ### Discord.Bots.gg ###
-
-        body = {"guildCount": guild_count}
-
-        headers = {
-            "Authorization": "eyJhbGciOiJIUzI1NiJ9.eyJhcGkiOnRydWUsImlkIjoiNTY2OTUxNzI3MTgyMzgxMDU3IiwiaWF0IjoxNjc3MzI0NzAyfQ.pVBZusOThAKtQ_VSmVXFLzBl8Ksg48Ayfgom6zekEI0"
-        }
-
-        requests.post(
-            "https://discord.bots.gg/api/v1/bots/1055425687726608454/stats",
-            json=body,
-            headers=headers,
-        )
-
-        ### Disforge.com ###
-
-        body = {"servers": guild_count}
-
-        headers = {
-            "Authorization": "a981aa94a7c86915bba835c4575e741f6200a95399397071257c7e498ee57ec3"
-        }
-
-        requests.post(
-            "https://disforge.com/api/botstats/2958", json=body, headers=headers
-        )
-
-        ### DiscordList.com ###
-
-        body = {"count": guild_count}
-
-        headers = {
-            "Authorization": "Bearer mR1thC8JGq5yQLIM994i4VS0dV5Ovfn6ZDeWATK2kdC7BxelGhhevC4eNNaM7fVPmVuWsl4veas0KR4iOnSs0i7OmapRWa3k"
-        }
-
-        requests.post(
-            "https://api.discordlist.gg/v0/bots/1055425687726608454/guilds",
-            json=body,
-            headers=headers,
-        )
-
-        ######################
 
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):
@@ -230,28 +134,32 @@ class Main(discord.Cog):
 
         await ctx.respond(embed=embed)
 
-    @commands.command("update")
-    async def update(self, ctx):
-        if ctx.author.id != 566951727182381057:
+    @commands.command("reload")
+    async def reload(self, ctx):
+        if ctx.author.id != owner_id:
             return
 
-        if alpha:
-            reload_cogs()
+        reload_cogs()
 
-            embed = embed_template()
-            embed.title = "Successfully updated all cogs"
-            embed.description = "Ran reload_cogs()"
+        embed = embed_template()
+        embed.title = "Successfully updated all cogs"
+        embed.description = "Ran reload_cogs()"
 
-            await ctx.send(embed=embed)
-        else:
-            await self.git_pull()
-            reload_cogs()
+        await ctx.send(embed=embed)
 
-            embed = embed_template()
-            embed.title = "Successfully pulled from repo and updated all cogs"
-            embed.description = "Ran git_pull() and reload_cogs()"
+    @commands.command("update")
+    async def update(self, ctx):
+        if ctx.author.id != owner_id:
+            return
 
-            await ctx.send(embed=embed)
+        await self.git_pull()
+        reload_cogs()
+
+        embed = embed_template()
+        embed.title = "Successfully pulled from repo and updated all cogs"
+        embed.description = "Ran git_pull() and reload_cogs()"
+
+        await ctx.send(embed=embed)
 
     @commands.slash_command(
         description="Check the stats of TuneTrivia.",

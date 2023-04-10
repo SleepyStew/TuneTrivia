@@ -6,7 +6,7 @@ import discord.utils
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend import client, bot_token, log, alpha
+from backend import client, bot_token, log
 
 app = FastAPI()
 
@@ -25,8 +25,6 @@ app.add_middleware(
 async def on_ready():
     print("Connected to Discord!")
     client.remove_command("help")
-    if alpha:
-        await client.change_presence(status=discord.Status.dnd)
     log.info(f"Bot is ready. Logged in as {client.user}")
 
 
