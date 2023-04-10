@@ -22,6 +22,7 @@ try:
     log_level: str = config.get("general", "log_level")
     raise_errors: bool = config.getboolean("general", "raise_errors")
     owner_id: int = config.getint("general", "your_discord_id")
+    client_id: str = config.get("general", "client_id")
 
     bot_token: str = config.get("secret", "discord_token")
     spotify_id: str = config.get("secret", "spotify_client_id")

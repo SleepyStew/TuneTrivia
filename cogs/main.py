@@ -11,7 +11,7 @@ from discord.ext import commands
 from discord.ui import Item
 
 import spotify
-from backend import log, error_template, embed_template, client
+from backend import log, error_template, embed_template, client, client_id
 from backend import wavelink_host, wavelink_password, wavelink_port, owner_id
 from bot import reload_cogs
 from data.guilddata import get_data, set_data
@@ -115,7 +115,7 @@ class Main(discord.Cog):
         embed = embed_template()
         embed.title = "Invite TuneTrivia!"
         embed.description = (
-            "Click [here](https://discord.com/oauth2/authorize?client_id=1055425687726608454&permissions=277028539456&scope=bot"
+            f"Click [here](https://discord.com/oauth2/authorize?client_id={client_id}&permissions=277028539456&scope=bot"
             "%20applications.commands) to invite TuneTrivia to your server."
         )
 
