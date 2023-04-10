@@ -8,8 +8,8 @@
 - Scalable, allowing multiple instances to run in different Discord guilds at once. 📈
 - LavaLink integration to enable seamless audio playback. ♨
 - Spotify integration to allow for custom guessing playlists. 🧩
-- Developer-friendly, allowing for easy modification and complete cog reloads using Discord commands.
-- Builtin stats API for easy integration with other systems.
+- Developer-friendly, allowing for easy modification and complete cog reloads using Discord commands. 👩‍💻
+- Builtin stats API for easy integration with other systems. 📊
 
 ## Example
 [![TuneTrivia Example](https://img.youtube.com/vi/_WTGbpRpnr4/0.jpg)](https://www.youtube.com/watch?v=_WTGbpRpnr4)
