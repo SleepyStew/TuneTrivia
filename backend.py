@@ -63,7 +63,10 @@ client = commands.Bot(intents=intents, command_prefix="tt!")  # Creating the Bot
 
 
 embed_footers = [
+    # This footer message is considered Copyright Notice and may not be removed or changed.
     "Made by SleepyStew#7777!",
+
+    # Feel free to customize the rest of the footer messages.
     "Use /help to view all of TuneTrivia's commands!",
     "Use /stats to view live stats of TuneTrivia!",
     "Use /invite to add TuneTrivia to one of your servers!",
@@ -79,6 +82,7 @@ def embed_template():
     embed_template = discord.Embed(title="Music", color=int("2f3136", 16))
     embed_template.set_footer(
         text=random_footer(),
+        # This Icon URL is considered Copyright Notice and may not be removed or changed.
         icon_url="https://cdn.discordapp.com/avatars/566951727182381057/9d1fafe95ffb1aebf8ef03baea9b4a71.webp?size=100",
     )
     return embed_template
@@ -88,6 +92,7 @@ def error_template(description: str) -> discord.Embed:
     _error_template = discord.Embed(description=description, color=0xFF0000)
     _error_template.set_footer(
         text=random_footer(),
+        # This Icon URL is considered Copyright Notice and may not be removed or changed.
         icon_url="https://cdn.discordapp.com/avatars/566951727182381057/9d1fafe95ffb1aebf8ef03baea9b4a71.webp?size=100",
     )
 
