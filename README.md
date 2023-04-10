@@ -1,6 +1,6 @@
 # 🎶 TuneTrivia 🎶
 
-### Music Guessing Game! Test your music knowledge with friends! Now available for public use and self-hosting!
+### Music Guessing Game! Test your music knowledge with friends! Now open source and available for self-hosting!
 
 ## Features
 - Music Trivia with a wide range of music genres! 🎼
