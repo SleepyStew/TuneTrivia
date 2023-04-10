@@ -15,6 +15,8 @@
 [![TuneTrivia Example](https://img.youtube.com/vi/_WTGbpRpnr4/0.jpg)](https://www.youtube.com/watch?v=_WTGbpRpnr4)
 
 ## How to run
+- Create a Discord bot from the [Discord Developer Portal](https://discord.com/developers/applications/)
+- Make sure this bot is granted all intents (Presence, Server Members and Message Content)
 - Download the source from this repository
 - Ensure you have Python 3 installed
 - Unzip and open a command prompt or terminal in that directory
