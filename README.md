@@ -9,6 +9,7 @@
 - LavaLink intergration ♨
 - Spotify integration for custom guessing playlists 🧩
 - Easy to develop on, supports full cog reloads from in Discord command
+- Builtin stats API for awesome integration to other systems
 
 ## Example
 [![TuneTrivia Example](https://img.youtube.com/vi/_WTGbpRpnr4/0.jpg)](https://www.youtube.com/watch?v=_WTGbpRpnr4)
