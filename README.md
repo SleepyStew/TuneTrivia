@@ -23,7 +23,7 @@
 - Unzip and open a command prompt or terminal in that directory.
 - Rename `config.example.ini` to `config.ini`.
 - Fill out the `your_discord_id`, `discord_token`, `spotify_client_id` and `spotify_client_secret` fields in the `config.ini`.
-- Run `pip -r requirements.txt`.
+- Run `pip install -r requirements.txt`.
 - Run `py run.py` (Windows) or `python3 run.py` (Linux).
 
 ## Information
